@@ -1,6 +1,7 @@
 import hashlib
 import time
 import json
+#to install bencode use pip install bencode.py
 import bencode
 from block import Block
 
