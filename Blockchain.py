@@ -11,6 +11,7 @@ class Blockchain:
 
     def __init__(self, hash="sha256"):
         self.hash_name = hash
+        self.difficulty = 20
         self.hash = eval(f"hashlib.{hash}")
         self.len = 0
         self.previous_hash = "0000"
@@ -25,9 +26,9 @@ class Blockchain:
         return False
 
     def insert_block(self, data):
-        new_block = Block(self.len+1,data,self.previous_hash,self.hash)
+        new_block = Block(self.len+1,data,self.previous_hash,self.hash,self.difficulty)
         self.len += 1
-        self.blockchain.append(new_block)
+        self.blockchain.append(new_block.get_block())
         return True
 
     def __hash(self, block):
@@ -78,3 +79,11 @@ class Blockchain:
         if not(self.verify()):
             return "Blockchain Not Valid"
         return True
+
+if __name__=="__main__":
+    a = Blockchain()
+    a.insert_block("data")
+    a.insert_block("some data")
+    a.insert_block("some data again")
+    print(a.blockchain
+)
